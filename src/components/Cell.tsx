@@ -8,9 +8,15 @@ type CellProps = {
 const Cell = ({ x, y }: CellProps) => {
 
   const state = PixelPainterStore.useState()
+  //Paint on this cell
+  const clickCell = () =>{
+     PixelPainterStore.update((s)=>{
+       s.canvas[y][x] = s.current_color
+     })
+  }
 
   return (
-    <td className="w-6 h-6 cursor-pointer" style={{backgroundColor: state.canvas[y][x]}}>
+    <td onClick={clickCell} className="w-6 h-6 cursor-pointer" style={{backgroundColor: state.canvas[y][x]}}>
     </td>
   )
 }
